@@ -1,0 +1,18 @@
+/**index.wxss**/
+
+.weui-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+}
+
+.weui-flex__item {
+  flex: 1;
+  text-align: center;
+}
+
+.item-main {
+  width: 95%;
+}
