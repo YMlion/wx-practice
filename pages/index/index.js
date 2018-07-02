@@ -6,15 +6,15 @@ Page({
   data: {
   },
   //事件处理函数
-  bindViewTap: function() {
+  imageTap: function() {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '../navbar/navbar'
     })
   },
   onLoad: function () {
     var that = this
     wx.request({
-      url: 'https://gank.io/api/data/%E7%A6%8F%E5%88%A9/20/1',
+      url: 'https://gank.io/api/data/%E7%A6%8F%E5%88%A9/30/1',
       success: function(res) {
         var results = res.data.results;
         var imgsLeft = []
