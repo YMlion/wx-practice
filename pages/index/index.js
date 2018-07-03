@@ -3,9 +3,34 @@
 const app = getApp()
 var images = []
 
+var refresh = function(that, pullDown) {
+  wx.request({
+    url: 'https://gank.io/api/data/%E7%A6%8F%E5%88%A9/30/1',
+    success: function(res) {
+      console.log('load success.')
+      if (pullDown) {
+        wx.stopPullDownRefresh()
+      }
+      images = res.data.results
+      var imgsLeft = []
+      var imgsRigth = []
+      for (var i = 0; i < images.length; i++) {
+        if (i % 2 == 0) {
+          imgsLeft.push(images[i])
+        } else {
+          imgsRigth.push(images[i])
+        }
+      }
+      that.setData({
+        imagesLeft: imgsLeft,
+        imagesRight: imgsRigth
+      })
+    }
+  })
+}
+
 Page({
-  data: {
-  },
+  data: {},
   //事件处理函数
   imageTap: function(event) {
     // just need date in fact.
@@ -15,26 +40,11 @@ Page({
       url: '../day/day?date=' + date
     })
   },
-  onLoad: function () {
-    var that = this
-    wx.request({
-      url: 'https://gank.io/api/data/%E7%A6%8F%E5%88%A9/30/1',
-      success: function(res) {
-        images = res.data.results;
-        var imgsLeft = []
-        var imgsRigth = []
-        for (var i = 0; i < images.length; i++) {
-          if (i % 2 == 0) {
-            imgsLeft.push(images[i])
-          } else {
-            imgsRigth.push(images[i])
-          }
-        }
-        that.setData({
-          imagesLeft: imgsLeft,
-          imagesRight: imgsRigth
-        })
-      }
-    })
+
+  onLoad: function() {
+    refresh(this, false)
+  },
+  onPullDownRefresh: function() {
+    refresh(this, true)
   },
 })

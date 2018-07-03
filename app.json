@@ -8,6 +8,7 @@
     "backgroundTextStyle": "black",
     "navigationBarBackgroundColor": "#f8f8f8",
     "navigationBarTitleText": "gank.io",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
   }
 }
