@@ -1,0 +1,14 @@
+/* pages/day/day.wxss */
+.page_video {
+  padding: 10px;
+  text-align: center;
+}
+.day_video {
+  width: 100%;
+}
+
+.weui-article__h1 {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 0.9em;
+}

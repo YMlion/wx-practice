@@ -5,6 +5,7 @@
   display: -webkit-flex;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   background-color: white;
 }
 
@@ -15,4 +16,5 @@
 
 .item-main {
   width: 95%;
+  margin: 5px;
 }

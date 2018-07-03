@@ -7,7 +7,8 @@ Page({
         sliderOffset: 0,
         sliderLeft: 0
     },
-    onLoad: function () {
+    onLoad: function (extralData) {
+      console.log(extralData)
         var that = this;
         wx.getSystemInfo({
             success: function(res) {

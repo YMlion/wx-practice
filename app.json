@@ -1,12 +1,13 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/navbar/navbar"
+    "pages/navbar/navbar",
+    "pages/day/day"
   ],
-  "window":{
-    "backgroundTextStyle":"black",
+  "window": {
+    "backgroundTextStyle": "black",
     "navigationBarBackgroundColor": "#f8f8f8",
     "navigationBarTitleText": "gank.io",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
 }

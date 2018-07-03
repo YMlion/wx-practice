@@ -2,10 +2,10 @@
   <view class="page__bd page__bd_spacing">
     <view class="weui-flex">
       <view class="weui-flex__item">
-        <image class='item-main' mode='aspectFit' bindtap='imageTap' wx:for='{{ imagesLeft }}' wx:for-item="imgUrl" src='{{imgUrl}}'></image>
+        <image class='item-main' mode='widthFix' bindtap='imageTap' wx:for='{{ imagesLeft }}' wx:for-item="imgData" wx:key='imgData._id' data-item='{{imgData}}' src='{{imgData.url}}'></image>
       </view>
       <view class="weui-flex__item">
-        <image class='item-main' mode='aspectFit' bindtap='imageTap' wx:for='{{ imagesRight }}' wx:for-item="imgUrl" src='{{imgUrl}}'></image>
+        <image class='item-main' mode='widthFix' bindtap='imageTap' wx:for='{{ imagesRight }}' wx:for-item="imgData" wx:key='imgData._id' data-item='{{imgData}}' src='{{imgData.url}}'></image>
       </view>
     </view>
   </view>
