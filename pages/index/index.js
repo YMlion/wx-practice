@@ -5,7 +5,10 @@ var images = []
 var pageNum = 1
 
 Page({
-  data: {},
+  data: {
+    indicatorDots: false,
+    galleryIndex: 0
+  },
   //事件处理函数
   imageTap: function (event) {
     // just need date in fact.
@@ -27,7 +30,11 @@ Page({
 
   },
   onPullDownRefresh: function () {
-    this.refresh(this, true)
+    if (this.data.showLarge) {
+      wx.stopPullDownRefresh()
+    } else {
+      this.refresh(this, true)
+    }
   },
   onReachBottom: function () {
     this.refresh(this, false, true)
@@ -69,7 +76,7 @@ Page({
 
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
-      var imgUrl = this.data.largeImageUrl
+      var imgUrl = images[this.data.galleryIndex].url
       return {
         title: 'beautiful girl',
         path: '/pages/index/index?url=' + imgUrl,
@@ -84,22 +91,26 @@ Page({
   },
   showLargePicture: function (event) {
     var url = event.currentTarget.dataset.item.url
+    var index = event.currentTarget.dataset.index
     this.setData({
-      largeImageUrl: url,
+      allImages: images,
+      galleryIndex: index,
       showLarge: true
     })
   },
   cancelDialog: function () {
     this.setData({
-      largeImageUrl: '',
+      allImages: [],
+      galleryIndex: 0,
       showLarge: false
     })
   },
   saveImage: function (event) {
     var that = this
-    console.log(event.currentTarget.dataset.url)
+    var index = event.currentTarget.dataset.index
+    console.log(index)
     wx.downloadFile({
-      url: event.currentTarget.dataset.url.replace('http:', 'https:'),
+      url: images[index].url.replace('http:', 'https:'),
       success: function (res) {
         console.log(res.tempFilePath)
         wx.saveImageToPhotosAlbum({
@@ -111,4 +122,11 @@ Page({
       }
     })
   },
+  onImageSwiped: function (event) {
+    var index = event.detail.current
+    this.data.galleryIndex = index
+  },
+  donothing: function () {
+
+  }
 })

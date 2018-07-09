@@ -1,23 +1,28 @@
-<view class="cover-dialog" catchtap='cancelDialog' wx:if='{{ showLarge }}'>
+<view class="cover-dialog" catchtap='cancelDialog' catchtouchmove='donothing' wx:if='{{ showLarge }}'>
   <view>
     <view class="weui-flex__item">
-      <image class='cover-image' mode='widthFix' src="{{ largeImageUrl }}"></image>
+      <swiper class='swiper' indicator-dots="{{indicatorDots}}" current='{{ galleryIndex }}' bindchange='onImageSwiped'>
+        <block wx:for="{{allImages}}" wx:for-item='imgItem' wx:key="imgItem._id">
+          <swiper-item>
+            <image class='cover-image' mode='widthFix' src="{{ imgItem.url }}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
     </view>
     <view class="cover-buttons">
-      <button class="cover-text" catchtap='saveImage' data-url="{{ largeImageUrl }}">保存到本地</button>
+      <button class="cover-text" catchtap='saveImage' data-index="{{ galleryIndex }}">保存到本地</button>
       <button class="cover-text" open-type='share'>分享</button>
     </view>
   </view>
 </view>
-
 <view class="page">
   <view class="page__bd page__bd_spacing">
     <view class="weui-flex">
       <view class="weui-flex__item">
-        <image class='item-main' mode='widthFix' bindtap='imageTap' bindlongpress='showLargePicture' wx:for='{{ imagesLeft }}' wx:for-item="imgData" wx:key='imgData._id' data-item='{{imgData}}' src='{{imgData.url}}'></image>
+        <image class='item-main' mode='widthFix' bindtap='imageTap' bindlongpress='showLargePicture' wx:for='{{ imagesLeft }}' wx:for-item="imgData" wx:key='imgData._id' data-item='{{imgData}}' data-index='{{index * 2}}' src='{{imgData.url}}'></image>
       </view>
       <view class="weui-flex__item">
-        <image class='item-main' mode='widthFix' bindtap='imageTap' bindlongpress='showLargePicture' wx:for='{{ imagesRight }}' wx:for-item="imgData" wx:key='imgData._id' data-item='{{imgData}}' src='{{imgData.url}}'></image>
+        <image class='item-main' mode='widthFix' bindtap='imageTap' bindlongpress='showLargePicture' wx:for='{{ imagesRight }}' wx:for-item="imgData" wx:key='imgData._id' data-item='{{imgData}}' data-index='{{index * 2 + 1}}' src='{{imgData.url}}'></image>
       </view>
     </view>
   </view>
