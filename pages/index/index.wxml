@@ -3,7 +3,7 @@
     <view class="weui-flex__item">
       <swiper class='swiper' indicator-dots="{{indicatorDots}}" current='{{ galleryIndex }}' bindchange='onImageSwiped'>
         <block wx:for="{{allImages}}" wx:for-item='imgItem' wx:key="imgItem._id">
-          <swiper-item>
+          <swiper-item class='swiper-item'>
             <image class='cover-image' mode='widthFix' src="{{ imgItem.url }}"></image>
           </swiper-item>
         </block>
