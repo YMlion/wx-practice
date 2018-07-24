@@ -49,6 +49,11 @@ Page({
     wx.request({
       url: 'https://gank.io/api/data/%E7%A6%8F%E5%88%A9/10/' + pageNum,
       success: function (res) {
+        console.log(res)
+        if (res.statusCode >= 300 || res.statusCode < 200) {
+          console.log('load error.')
+          return
+        }
         console.log('load success.')
         if (pullDown) {
           wx.stopPullDownRefresh()
@@ -70,6 +75,9 @@ Page({
           imagesLeft: imgsLeft,
           imagesRight: imgsRigth
         })
+      },
+      fail: function (err) {
+        console.log(err)
       }
     })
   },

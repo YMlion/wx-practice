@@ -11,7 +11,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.1.1",
+	"libVersion": "2.0.9",
 	"appid": "wxd11cde640b33f3ff",
 	"projectname": "gankio",
 	"isGameTourist": false,
